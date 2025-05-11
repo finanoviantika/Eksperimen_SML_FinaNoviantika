@@ -40,7 +40,12 @@ jobs:
         run: |
           git config --global user.name "${{ secrets.USERNAME }}"
           git config --global user.email "${{ secrets.EMAIL }}"
-          git add preprocessing/dataset_preprocessing/processed_data.csv
-          git commit -m "Add processed_data.csv from preprocessing"
-          git push origin main || echo "No changes to push"
-          
+          git add preprocessing/dataset_preprocessing || echo "Nothing to add"
+
+          # Hanya commit jika ada perubahan
+          if git diff --cached --quiet; then
+            echo "⚠️ Tidak ada perubahan untuk di-commit."
+          else
+            git commit -m "Add preprocessing output files"
+            git push origin main
+          fi
