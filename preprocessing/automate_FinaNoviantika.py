@@ -104,6 +104,7 @@ def preprocess_data(file_path, target_column, save_path=None):
         processed_df.to_csv(os.path.join(save_path, "processed_data.csv"), index=False)
 
     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+    
     return X_train, X_test, y_train, y_test
 
 if __name__ == "__main__":
