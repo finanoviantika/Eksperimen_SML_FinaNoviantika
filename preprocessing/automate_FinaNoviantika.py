@@ -29,7 +29,7 @@ def preprocess_data(file_path, target_column, save_path=None):
 
     # Buat direktori untuk menyimpan file jika belum ada
     if save_path:
-        os.makedirs(save_path, exist_ok=True)
+        os.makedirs(args.save_path, exist_ok=True)
 
     # Simpan visualisasi distribusi data numerik
     plt.figure(figsize=(12, 12))
@@ -101,10 +101,10 @@ def preprocess_data(file_path, target_column, save_path=None):
         dump(scaler, os.path.join(save_path, "preprocessor.joblib"))
         processed_df = pd.DataFrame(X_scaled, columns=X.columns)
         processed_df[target_column] = y.values
-        processed_df.to_csv(os.path.join(save_path, "processed_data.csv"), index=False)
+        processed_df.to_csv(os.path.join(args.save_path, "processed_data.csv"), index=False)
 
     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
-    
+
     return X_train, X_test, y_train, y_test
 
 if __name__ == "__main__":
