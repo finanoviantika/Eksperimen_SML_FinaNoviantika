@@ -35,7 +35,7 @@ jobs:
 
       - name: Cek Output File
         run: |
-          if [ -f "preprocessing_output/processed_data.csv" ]; then
+          if [ -f "preprocessing/dataset_preprocessing/processed_data.csv" ]; then
             echo "✅ File processed_data.csv berhasil dibuat."
           else
             echo "❌ File processed_data.csv tidak ditemukan."
